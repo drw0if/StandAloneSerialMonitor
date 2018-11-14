@@ -1,7 +1,17 @@
 package com.DrW0if.code;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
+import com.DrW0if.test.*;
 
 import jssc.SerialPortList;
 import jssc.SerialPort;
@@ -75,6 +85,42 @@ public interface Utility {
 			
 			System.exit(1);
 		}
+	}
+
+	public static void GUI() {
+		//Frame
+		JFrame window = new JFrame("StandAloneSerialMonitor");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setPreferredSize(new Dimension(800,300));
+		
+		//Panel
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		
+		//layout
+		SpringLayout layout = new SpringLayout();
+		panel.setLayout(layout);
+		
+		JTextField input = new JTextField();
+			panel.add(input);
+			input.setPreferredSize(new Dimension(700, 30));
+			input.setText("Manzoni");
+		JButton submit = new JButton("Send");
+			panel.add(submit);
+			submit.setPreferredSize(new Dimension(100, 29));
+		
+		layout.putConstraint(SpringLayout.NORTH, input, 0, SpringLayout.NORTH, panel);
+		layout.putConstraint(SpringLayout.WEST, input, 0, SpringLayout.WEST, panel);
+		layout.putConstraint(SpringLayout.NORTH, submit, 0, SpringLayout.NORTH, panel);
+		layout.putConstraint(SpringLayout.EAST, input, 0, SpringLayout.WEST, submit);
+		layout.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, panel);
+		
+		
+		
+		
+		window.getContentPane().add(panel);
+		window.pack();
+		window.setVisible(true);
 	}
 	
 	public static void help() {

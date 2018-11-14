@@ -3,6 +3,8 @@ package com.DrW0if.code;
 public class StandAloneSerialMonitor {
 	public static void main(String... args) {
 		
+		Utility.GUI();
+	/*	
 		//0 = help, 1 = list, 2 = read, 3 = wip(interactive mode), 4 = GUI
 		int op = 0;
 		String strSerial = null,
@@ -67,6 +69,6 @@ public class StandAloneSerialMonitor {
 			case 4: break;
 		}
 		
-		
+		*/
 	}
 }
