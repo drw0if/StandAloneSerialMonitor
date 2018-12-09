@@ -2,16 +2,26 @@ package com.DrW0if.code;
 
 public class StandAloneSerialMonitor {
 	public static void main(String... args) {
-		
-		Utility.GUI();
-	/*	
+			
 		//0 = help, 1 = list, 2 = read, 3 = wip(interactive mode), 4 = GUI
-		int op = 0;
+		int op = 4;
 		String strSerial = null,
 			   strBaud = null,
 			   fileName = null;
 		
 		for(int i = 0; i < args.length; i++) {
+			
+			if(args[i].equals("-h")) {
+				op = 0;
+				break;
+			}
+			
+			//--interactive for GUI
+			if(args[i].equals("--interactive")) {
+				op = 4;
+				break;
+			}
+			
 			//-l for the list of the ports
 			if(args[i].equals("-l")) {
 				op = 1;
@@ -48,6 +58,7 @@ public class StandAloneSerialMonitor {
 				}
 			}
 			
+			//-f for output on file
 			if(args[i].equals("-f")) {
 				try {
 					if(!args[i+1].startsWith("-")) {
@@ -65,10 +76,8 @@ public class StandAloneSerialMonitor {
 			case 0: Utility.help(); break;
 			case 1: Utility.portList(); break;
 			case 2: Utility.readFromConnection(strSerial, strBaud, fileName); break;
-			case 3: break;
-			case 4: break;
+			case 4: new gui_menu(); 
 		}
 		
-		*/
 	}
 }
