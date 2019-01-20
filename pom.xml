@@ -2,19 +2,66 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>StandAloneSerialMonitor</groupId>
   <artifactId>StandAloneSerialMonitor</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
+    	<plugin>
+		    <artifactId>maven-jar-plugin</artifactId>
+		    <version>3.0.2</version>
+		    <executions>
+		        <execution>
+		            <id>default-jar</id>
+		            <phase>none</phase>
+		        </execution>
+		    </executions>
+		</plugin>
+    	<plugin>
+    		<artifactId>maven-eclipse-plugin</artifactId>
+			<groupId>org.apache.maven.plugins</groupId>
+			<version>2.9</version>
+			<configuration>
+				<downloadSources>true</downloadSources>
+				<downloadJavadocs>false</downloadJavadocs>
+			</configuration>
+		</plugin>
+			
+    	<plugin>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.8.0</version>
+	        <configuration>
+	          <source>1.8</source>
+	          <target>1.8</target>
+	        </configuration>
+    	</plugin>
+    	
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<groupId>org.apache.maven.plugins</groupId>
+			<version>2.4.1</version>
+			
+			<configuration>
+				<finalName>StandAloneSerialMonitor</finalName>
+				<descriptorRefs>
+					<descriptorRef>jar-with-dependencies</descriptorRef>
+				</descriptorRefs>
+				<archive>
+				  <manifest>
+					<mainClass>com.DrW0if.code.StandAloneSerialMonitor</mainClass>
+				  </manifest>
+				</archive>
+			</configuration>
+			
+			<executions>
+			  <execution>
+				<phase>package</phase> 
+				<goals>
+					<goal>single</goal>
+				</goals>
+			  </execution>
+			</executions>
+		</plugin>
+  	</plugins>
   </build>
   <dependencies>
   	<dependency>

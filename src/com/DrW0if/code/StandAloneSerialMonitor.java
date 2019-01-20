@@ -55,6 +55,7 @@ public class StandAloneSerialMonitor {
 				}
 				catch(ArrayIndexOutOfBoundsException e) { 
 					System.out.println("No baudrate, 9600 is default");
+					strBaud = "9600";
 				}
 			}
 			

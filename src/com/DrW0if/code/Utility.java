@@ -7,7 +7,7 @@ import jssc.SerialPortList;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 
-public interface Utility {
+public class Utility {
 	
 	public static boolean isInt(String s) {
 		try { Integer.parseInt(s);}
@@ -26,6 +26,7 @@ public interface Utility {
 	}
 	
 	public static void readFromConnection(String strSerial, String strBaudRate, String filename) {
+		
 		int baudRate = 9600;
 		
 		if(strBaudRate == null) {
@@ -50,6 +51,7 @@ public interface Utility {
 			dump = true;
 		
 		SerialPort port = new SerialPort(strSerial);
+
 		try {
 			if(dump)
 				fw = new FileWriter(filename);
@@ -63,8 +65,7 @@ public interface Utility {
 				if(buffer != null)
 					for(int i = 0; i < buffer.length; i++) {
 						System.out.print((char)buffer[i]);
-						if(dump)
-							fw.write((char)buffer[i]);
+						if(dump)	fw.write((char)buffer[i]);
 					}
 				
 			}
@@ -73,17 +74,16 @@ public interface Utility {
 			System.err.println("Impossible to communicate with port");
 		}
 		catch (IOException e) {
-			System.err.println("Impossible writing to file");
+			System.err.println("Impossible to write to file");
 			help();
 		}
 		finally {
 			if(dump) {
 				try { fw.close(); } 
-				catch (IOException e) { System.err.println("Impossible closing the file"); }
+				catch (IOException e) { System.err.println("Impossible to close the file"); }
 			}
-			
-			System.exit(1);
 		}
+		System.exit(1);
 	}
 	
 	public static void help() {

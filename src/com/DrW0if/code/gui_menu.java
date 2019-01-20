@@ -106,9 +106,6 @@ public class gui_menu implements Runnable{
 		});
 				
 		window.pack();
-		window.setVisible(true);
-		
+		window.setVisible(true);		
 	}
-	
-
 }

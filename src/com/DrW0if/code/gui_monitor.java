@@ -80,7 +80,6 @@ public class gui_monitor implements Runnable{
 		window.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
-				System.out.println("STACCAH STACCAH");
 				if(connection != null && connection.isOpened())
 					try { connection.closePort();}
 					catch(Exception e){ e.printStackTrace(); }
